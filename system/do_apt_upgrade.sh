@@ -22,6 +22,8 @@ Log "== Do Apt Upgrade: $(Now) ==" >>$logfile
 
 Run sudo apt-get update
 
+Run sudo apt list --upgradable
+
 Run sudo apt-get dist-upgrade -y
 
 Run sudo apt-get autoremove -y

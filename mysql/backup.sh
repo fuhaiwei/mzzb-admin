@@ -24,7 +24,7 @@ backfile=$backroot/backup.sql
 mkdir -p $backroot
 
 # 创建备份
-mysqldump -uroot -pfuhaiwei --ignore-table=$database.message $database >$backfile
+mysqldump -uroot -pfuhaiwei $database >$backfile
 Log "== Backup Mzzb Server: $(Now) =="
 Log "backup file size: $(Duf $backfile)"
 Log ""

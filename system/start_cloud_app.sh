@@ -20,8 +20,6 @@ function Run() {
 # 开始脚本
 Log "== Start Cloud App: $(Now) =="
 
-Run /home/ubuntu/.local/opt/activemq/currnet/bin/activemq start
-
 Run bash /home/ubuntu/mzzb-server/app.sh st
 
 Log ""

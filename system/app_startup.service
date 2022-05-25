@@ -1,9 +1,0 @@
-[Unit]
-Description=Startup
-After=network.target
-
-[Service]
-ExecStart=su -l ubuntu -c 'bash ~/admin/system/start_cloud_app.sh'
-
-[Install]
-WantedBy=multi-user.target

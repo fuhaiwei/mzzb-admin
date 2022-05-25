@@ -1,0 +1,13 @@
+[Unit]
+Description=Mzzb Spider
+
+[Service]
+Type=forking
+User=ubuntu
+PIDFile=/home/ubuntu/mzzb-spider/var/run.pid
+WorkingDirectory=/home/ubuntu/mzzb-spider
+ExecStart=bash app.sh start
+ExecStop=bash app.sh stop
+
+[Install]
+WantedBy=multi-user.target

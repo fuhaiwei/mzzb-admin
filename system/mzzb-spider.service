@@ -2,7 +2,7 @@
 Description=Mzzb Spider
 
 [Service]
-Type=forking
+Type=exec
 User=ubuntu
 PIDFile=/home/ubuntu/mzzb-spider/var/run.pid
 WorkingDirectory=/home/ubuntu/mzzb-spider

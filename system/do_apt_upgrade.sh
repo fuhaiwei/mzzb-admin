@@ -29,3 +29,7 @@ Run sudo apt-get dist-upgrade -y
 Run sudo apt-get autoremove -y
 
 Run sudo apt-get autoclean -y
+
+if [ $(date +%w) -eq 2 ]; then
+    Run sudo reboot
+fi

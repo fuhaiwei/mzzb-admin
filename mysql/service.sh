@@ -25,6 +25,7 @@ exec_daemon_start() {
     mkdir -p /var/run/mysqld
     chown mysql:mysql /var/run/mysqld
     nohup $DAEMON --user mysql >/dev/null 2>&1 &
+    [ ! -f $PIDFILE ] && echo $! >$PIDFILE
     wait_for_started
     echo "$NAME started successfully, Pid=$(cat $PIDFILE)"
 }
@@ -33,6 +34,7 @@ exec_daemon_stop() {
     echo "$NAME is stopping..."
     kill "$(cat $PIDFILE)"
     wait_for_stopped
+    [ -f $PIDFILE ] && rm $PIDFILE
     echo "$NAME stopped successfully"
 }
 

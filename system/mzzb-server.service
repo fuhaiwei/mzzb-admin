@@ -9,8 +9,8 @@ User=ubuntu
 PIDFile=/home/ubuntu/mzzb-server/var/run.pid
 ExecStop=bash /home/ubuntu/mzzb-server/app.sh stop
 ExecStart=bash /home/ubuntu/mzzb-server/app.sh start
-ExecStartPre=bash /home/ubuntu/admin/nginx2/app.sh init
-ExecStartPre=bash /home/ubuntu/admin/rabbitmq/app.sh init
+ExecStartPre=bash /home/ubuntu/mzzb-admin/nginx/app.sh init
+ExecStartPre=bash /home/ubuntu/mzzb-admin/rabbitmq/app.sh init
 
 [Install]
 WantedBy=multi-user.target

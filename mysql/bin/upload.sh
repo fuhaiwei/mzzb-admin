@@ -2,6 +2,7 @@
 logname=upload_mzzb_server
 logbase=$HOME/task_logs
 logfile=$logbase/$logname.log
+
 mkdir -p $logbase
 
 function Now() {
@@ -13,28 +14,29 @@ function Log() {
 }
 
 function Duf() {
-    echo $(/usr/bin/du -sh ${1} | awk '{print $1}')
+    echo $(/usr/bin/du -sh $1 | awk '{print $1}')
 }
 
 # 开始脚本
-basepath=/home/ubuntu/backup
-database=mzzb_server
-init_tag=0e22ab3
+basepath=$HOME/backup/mzzb_server
+mkdir -p $basepath
 
-cd $basepath/$database || exit
+[[ -f $basepath/backup.sql ]] || exit
+[[ -d $basepath/upload ]] || exit
+cd $basepath/upload || exit
 
-rm upload/backup3.tgz
-mv upload/backup2.tgz upload/backup3.tgz
-mv upload/backup1.tgz upload/backup2.tgz
-tar -czvf upload/backup1.tgz backup.sql
+rm backup3.tgz
+mv backup2.tgz backup3.tgz
+mv backup1.tgz backup2.tgz
+tar -czvf backup1.tgz ../backup.sql 2>/dev/null
 
 Log "== Upload Mzzb Server: $(Now) =="
-Log "backup file size: $(Duf upload/backup1.tgz)"
+Log "backup file size: $(Duf backup1.tgz)"
 Log ""
 
+rm -rf .git
 git init
-git reset $init_tag
-git add upload/*.tgz
+git add .
 git commit -m "backup update"
-git push -f
-git gc
+git remote add origin git@github.com:fuhaiwei/mzzb-backup.git
+git push origin master -u -f

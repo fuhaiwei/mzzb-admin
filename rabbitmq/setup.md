@@ -1,8 +1,7 @@
 # Setup RabbitMq
 
 ```shell
-sudo rabbitmq-plugins enable rabbitmq_management
-sudo rabbitmqctl add_user admin admin
-sudo rabbitmqctl set_user_tags admin administrator
-sudo rabbitmqctl set_permissions admin ".*" ".*" ".*"
+rabbitmqctl add_user admin admin
+rabbitmqctl set_user_tags admin administrator
+rabbitmqctl set_permissions admin ".*" ".*" ".*"
 ```

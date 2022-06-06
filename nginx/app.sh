@@ -16,6 +16,7 @@ init)
         -v $home/log:/var/log/nginx \
         -v $home/www:/usr/share/nginx/html:ro \
         -p 80:80 \
+        -p 81:81 \
         -p 443:443 \
         -d $dest
     ;;

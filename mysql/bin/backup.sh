@@ -2,6 +2,7 @@
 logname=backup_mzzb_server
 logbase=$HOME/task_logs
 logfile=$logbase/$logname.log
+
 mkdir -p $logbase
 
 function Now() {
@@ -17,14 +18,14 @@ function Duf() {
 }
 
 # 环境准备
-basepath=/home/ubuntu/backup
+basepath=/home/qcloud/backup
 database=mzzb_server
 backroot=$basepath/$database
 backfile=$backroot/backup.sql
 mkdir -p $backroot
 
 # 创建备份
-mysqldump -uroot -pfuhaiwei $database >$backfile
+mysqldump -uroot -p$DB_PASS $database >$backfile 2>/dev/null
 Log "== Backup Mzzb Server: $(Now) =="
 Log "backup file size: $(Duf $backfile)"
 Log ""

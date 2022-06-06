@@ -27,10 +27,9 @@ open https://www.runoob.com/docker/docker-tutorial.html
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 sudo tee /etc/docker/daemon.json >/dev/null <<EOF
 {
-    "registry-mirrors": [
-        "https://hub-mirror.c.163.com/",
-        "https://docker.mirrors.ustc.edu.cn/"
-    ]
+  "registry-mirrors": [
+    "https://hub-mirror.c.163.com"
+  ]
 }
 EOF
 ```

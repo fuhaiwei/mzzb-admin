@@ -28,7 +28,7 @@ cd $basepath/upload || exit
 rm backup3.tgz
 mv backup2.tgz backup3.tgz
 mv backup1.tgz backup2.tgz
-tar -czvf backup1.tgz ../backup.sql 2>/dev/null
+tar -czvf backup1.tgz ../backup.sql
 
 Log "== Upload Mzzb Server: $(Now) =="
 Log "backup file size: $(Duf backup1.tgz)"

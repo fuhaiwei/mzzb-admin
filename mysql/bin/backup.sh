@@ -25,7 +25,7 @@ backfile=$backroot/backup.sql
 mkdir -p $backroot
 
 # 创建备份
-mysqldump -uroot -p$DB_PASS $database >$backfile 2>/dev/null
+mysqldump -uroot -p$DB_PASS $database >$backfile
 Log "== Backup Mzzb Server: $(Now) =="
 Log "backup file size: $(Duf $backfile)"
 Log ""

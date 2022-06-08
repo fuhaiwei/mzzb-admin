@@ -6,7 +6,7 @@
 #
 # m h dom mon dow command
 
-10 * * * * bash /home/qcloud/mzzb-admin/mysql/bin/backup.sh
-15 0 * * * bash /home/qcloud/mzzb-admin/mysql/bin/upload.sh
-00 0 * * * bash /home/qcloud/mzzb-admin/nginx/bin/backup.sh
-30 4 * * * bash /home/qcloud/mzzb-admin/system/do_apt_upgrade.sh
+10 * * * * bash /home/qcloud/mzzb-admin/mysql/bin/backup.sh >/dev/null 2>&1
+15 0 * * * bash /home/qcloud/mzzb-admin/mysql/bin/upload.sh >/dev/null 2>&1
+00 0 * * * bash /home/qcloud/mzzb-admin/nginx/bin/backup.sh >/dev/null 2>&1
+30 4 * * * bash /home/qcloud/mzzb-admin/system/do_apt_upgrade.sh >/dev/null 2>&1

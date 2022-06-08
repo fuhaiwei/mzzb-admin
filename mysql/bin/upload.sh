@@ -1,16 +1,16 @@
 # 通用模块
-logname=upload_mzzb_server
-logbase=$HOME/task_logs
-logfile=$logbase/$logname.log
+logName=upload_mzzb_server
+logBase=$HOME/task_logs
+logFile=$logBase/$logName.log
 
-mkdir -p $logbase
+mkdir -p $logBase
 
 function Now() {
     echo $(date '+%Y/%m/%d %H:%M:%S')
 }
 
 function Log() {
-    echo "$*" >>$logfile
+    echo "$*" >>$logFile
 }
 
 function Duf() {

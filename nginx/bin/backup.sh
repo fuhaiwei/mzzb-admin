@@ -1,7 +1,9 @@
-thePath="$(realpath $(dirname $0)/..)"
-logBase=$thePath/log
-logFile=$logBase/backup.log
-fmtDate=$(date -d '1 days ago' +%Y%m%d)
+# 通用模块
+logName=split_nginx_log
+logBase=$HOME/task_logs
+logFile=$logBase/$logName.log
+
+mkdir -p $logBase
 
 function Now() {
     echo $(date '+%Y/%m/%d %H:%M:%S')
@@ -12,22 +14,28 @@ function Log() {
 }
 
 function Wcl() {
-    echo $(wc -l $1 | awk '{print $1}')
+    echo $(/usr/bin/wc -l $1 | awk '{print $1}')
 }
 
-mv $logBase/visit.log $logBase/visit.tmp
-mv $logBase/error.log $logBase/error.tmp
+# 开始脚本
+thePath="$(realpath $(dirname $0)/..)"
+logRoot=$thePath/log
+fmtDate=$(date -d '1 days ago' +%Y%m%d)
+
+mkdir -p $logRoot/backup
+
+mv $logRoot/visit.log $logRoot/visit.tmp
+mv $logRoot/error.log $logRoot/error.tmp
 bash $thePath/app.sh kcut
 
-mkdir -p $logBase/backup
-cat $logBase/visit.tmp >>$logBase/backup/$fmtDate-visit.log
-cat $logBase/error.tmp >>$logBase/backup/$fmtDate-error.log
+cat $logRoot/visit.tmp >>$logRoot/backup/$fmtDate-visit.log
+cat $logRoot/error.tmp >>$logRoot/backup/$fmtDate-error.log
 
 Log "== Split Nginx Log: $(Now) =="
-Log "visit.log: $(Wcl $logBase/visit.tmp) lines"
-Log "error.log: $(Wcl $logBase/error.tmp) lines"
+Log "visit.log: $(Wcl $logRoot/visit.tmp) lines"
+Log "error.log: $(Wcl $logRoot/error.tmp) lines"
 Log ""
 
-sudo rm $logBase/visit.tmp
-sudo rm $logBase/error.tmp
-find $logBase/backup -type f -mtime +30 -delete
+sudo rm $logRoot/visit.tmp
+sudo rm $logRoot/error.tmp
+find $logRoot/backup -type f -mtime +30 -delete

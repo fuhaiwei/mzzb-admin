@@ -1,23 +1,23 @@
 # 通用模块
-logname=backup_mzzb_server
-logbase=$HOME/task_logs
-logfile=$logbase/$logname.log
+logName=backup_mzzb_server
+logBase=$HOME/task_logs
+logFile=$logBase/$logName.log
 
-mkdir -p $logbase
+mkdir -p $logBase
 
 function Now() {
     echo $(date '+%Y/%m/%d %H:%M:%S')
 }
 
 function Log() {
-    echo "$*" >>$logfile
+    echo "$*" >>$logFile
 }
 
 function Duf() {
-    echo $(/usr/bin/du -sh ${1} | awk '{print $1}')
+    echo $(/usr/bin/du -sh $1 | awk '{print $1}')
 }
 
-# 环境准备
+# 开始脚本
 basepath=/home/qcloud/backup
 database=mzzb_server
 backroot=$basepath/$database
@@ -38,7 +38,7 @@ mkdir -p $copypath
 gzip -c $backfile >$copypath/backup-$datetext-$timetext.sql.gz
 
 # 清理超过七天的每小时备份
-find $backroot/hour_backup -type f -mtime +6 | xargs -I {} rm {}
+find $backroot/hour_backup -type f -mtime +6 -delete
 
 # 存放每天备份
 monthtext=$(date +%Y%m)
@@ -47,7 +47,7 @@ mkdir -p $copypath
 gzip -c $backfile >$copypath/backup-$datetext.sql.gz
 
 # 清理超过一百天的每天备份
-find $backroot/date_backup -type f -mtime +99 | xargs -I {} rm {}
+find $backroot/date_backup -type f -mtime +99 -delete
 
 # 清理空文件夹
-find $backroot -type d -empty | xargs -I {} rm -rf {}
+find $backroot -type d -empty -delete

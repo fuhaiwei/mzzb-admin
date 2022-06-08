@@ -20,7 +20,7 @@ mv $logBase/error.log $logBase/error.tmp
 bash $thePath/app.sh kcut
 
 mkdir -p $logBase/backup
-cat $logBase/error.tmp >>$logBase/backup/$fmtDate-visit.log
+cat $logBase/visit.tmp >>$logBase/backup/$fmtDate-visit.log
 cat $logBase/error.tmp >>$logBase/backup/$fmtDate-error.log
 
 Log "== Split Nginx Log: $(Now) =="
@@ -28,6 +28,6 @@ Log "visit.log: $(Wcl $logBase/visit.tmp) lines"
 Log "error.log: $(Wcl $logBase/error.tmp) lines"
 Log ""
 
-sudo rm $logBase/error.tmp
+sudo rm $logBase/visit.tmp
 sudo rm $logBase/error.tmp
 find $logBase/backup -type f -mtime +30 -delete

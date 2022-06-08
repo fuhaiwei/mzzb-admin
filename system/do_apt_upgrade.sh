@@ -22,7 +22,7 @@ Log "== Do Apt Upgrade: $(Now) ==" >>$logfile
 
 Run sudo apt-get update
 
-Run sudo apt list --upgradable
+Run sudo apt list --upgradable 2>&1
 
 Run sudo apt-get dist-upgrade -y
 

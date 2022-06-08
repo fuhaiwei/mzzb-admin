@@ -9,8 +9,9 @@ init)
     sudo docker rm -f $name
     sudo docker run --name $name \
         --hostname $name \
-        -v $home/data:/var/lib/rabbitmq \
         -v $home/etc:/etc/rabbitmq:ro \
+        -v $home/opt/passwd:/etc/passwd \
+        -v $home/data:/var/lib/rabbitmq \
         -p 5672:5672 \
         -p 15672:15672 \
         -d $dest

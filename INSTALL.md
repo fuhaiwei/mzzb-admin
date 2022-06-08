@@ -1,6 +1,6 @@
 # Install
 
-## Install JDK 8
+## Install JDK 17
 
 ```bash
 sudo apt install openjdk-17-jdk-headless -y
@@ -56,10 +56,4 @@ sudo systemctl enable mzzb-server.service
 
 cat mzzb-admin/system/copy_to_crontab.sh
 crontab -e
-```
-
-## Install Ohter Software
-
-```bash
-sudo apt install tree htop mycli httpie -y
 ```

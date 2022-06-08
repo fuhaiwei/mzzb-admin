@@ -3,10 +3,10 @@ Description=Mzzb Spider
 
 [Service]
 Type=exec
-User=ubuntu
-PIDFile=/home/ubuntu/mzzb-spider/var/run.pid
-ExecStop=bash /home/ubuntu/mzzb-spider/app.sh stop
-ExecStart=bash /home/ubuntu/mzzb-spider/app.sh start
+User=bcloud
+PIDFile=/home/bcloud/mzzb-spider/var/run.pid
+ExecStop=bash /home/bcloud/mzzb-spider/app.sh stop
+ExecStart=bash /home/bcloud/mzzb-spider/app.sh start
 
 [Install]
 WantedBy=multi-user.target

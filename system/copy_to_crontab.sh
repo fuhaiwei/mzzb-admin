@@ -6,4 +6,4 @@
 #
 # m h  dom mon dow   command
 
-30 4 * * * bash /home/bcloud/mzzb-admin/system/do_apt_upgrade.sh >/dev/null 2>&1
+30 4 * * * bash -l ~/mzzb-admin/system/do_apt_upgrade.sh >/dev/null 2>&1

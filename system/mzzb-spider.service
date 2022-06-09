@@ -5,8 +5,8 @@ Description=Mzzb Spider
 Type=exec
 User=bcloud
 PIDFile=/home/bcloud/mzzb-spider/var/run.pid
-ExecStop=bash /home/bcloud/mzzb-spider/app.sh stop
-ExecStart=bash /home/bcloud/mzzb-spider/app.sh start
+ExecStop=bash -l /home/bcloud/mzzb-spider/app.sh stop
+ExecStart=bash -l /home/bcloud/mzzb-spider/app.sh start
 
 [Install]
 WantedBy=multi-user.target

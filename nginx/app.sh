@@ -7,6 +7,9 @@ mkdir -p $home/www
 mkdir -p $home/log
 
 case $1 in
+pull)
+    sudo docker pull $dest
+    ;;
 init)
     sudo docker rm -f $name
     sudo docker run --name $name \
@@ -30,6 +33,7 @@ kcut)
     sudo docker exec $name bash -c 'kill -USR1 $(cat /var/run/nginx.pid)'
     ;;
 *)
+    echo "sh app.sh pull"
     echo "sh app.sh init"
     echo "sh app.sh stop"
     echo "sh app.sh bash"

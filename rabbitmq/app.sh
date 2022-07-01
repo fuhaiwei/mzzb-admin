@@ -5,6 +5,9 @@ home="$(realpath $(dirname $0))"
 mkdir -p $home/data
 
 case $1 in
+pull)
+    sudo docker pull $dest
+    ;;
 init)
     sudo docker rm -f $name
     sudo docker run --name $name \
@@ -23,6 +26,7 @@ bash)
     sudo docker exec -it $name bash
     ;;
 *)
+    echo "sh app.sh pull"
     echo "sh app.sh init"
     echo "sh app.sh stop"
     echo "sh app.sh bash"

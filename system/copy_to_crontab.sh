@@ -9,4 +9,4 @@
 10 * * * * bash -l ~/mzzb-admin/mysql/bin/backup.sh >/dev/null 2>&1
 15 0 * * * bash -l ~/mzzb-admin/mysql/bin/upload.sh >/dev/null 2>&1
 00 0 * * * bash -l ~/mzzb-admin/nginx/bin/backup.sh >/dev/null 2>&1
-30 4 * * * bash -l ~/mzzb-admin/system/do_apt_upgrade.sh >/dev/null 2>&1
+30 3 * * * bash -l ~/mzzb-admin/system/do_apt_upgrade.sh >/dev/null 2>&1

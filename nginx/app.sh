@@ -26,6 +26,9 @@ init)
 stop)
     sudo docker stop $name
     ;;
+start)
+    sudo docker start $name
+    ;;
 bash)
     sudo docker exec -it $name bash
     ;;

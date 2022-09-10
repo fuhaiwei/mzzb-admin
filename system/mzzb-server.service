@@ -9,8 +9,8 @@ User=qcloud
 PIDFile=/home/qcloud/mzzb-server/var/run.pid
 ExecStop=bash -l /home/qcloud/mzzb-server/app.sh stop
 ExecStart=bash -l /home/qcloud/mzzb-server/app.sh start
-ExecStartPre=bash -l /home/qcloud/mzzb-admin/nginx/app.sh init
-ExecStartPre=bash -l /home/qcloud/mzzb-admin/rabbitmq/app.sh init
+ExecStartPre=bash -l /home/qcloud/mzzb-admin/nginx/app.sh start
+ExecStartPre=bash -l /home/qcloud/mzzb-admin/rabbitmq/app.sh start
 
 [Install]
 WantedBy=multi-user.target

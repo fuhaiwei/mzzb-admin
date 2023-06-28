@@ -1,5 +1,5 @@
 name="app-nginx"
-dest="nginx:mainline"
+dest="nginx:stable"
 home="$(realpath $(dirname $0))"
 
 mkdir -p $home/etc/cert.d
@@ -29,6 +29,9 @@ stop)
 start)
     sudo docker start $name
     ;;
+logs)
+    sudo docker logs $name
+    ;;
 bash)
     sudo docker exec -it $name bash
     ;;
@@ -39,6 +42,8 @@ kcut)
     echo "sh app.sh pull"
     echo "sh app.sh init"
     echo "sh app.sh stop"
+    echo "sh app.sh start"
+    echo "sh app.sh logs"
     echo "sh app.sh bash"
     echo "sh app.sh kcut"
     ;;
